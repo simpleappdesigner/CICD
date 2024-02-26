@@ -5,6 +5,9 @@ FROM python:3.10.13-alpine3.19
 # set up workspace directory , create folder app
 WORKDIR /app
 
+# Create a new folder named Runlog
+RUN mkdir Runlog
+
 # copy the requirements.txt which will be used to build the python enviroment
 COPY ./requirements.txt /app/
 

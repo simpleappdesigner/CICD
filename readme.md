@@ -44,5 +44,15 @@ quick snap of executed commands:
 ![Alt text](image-2.png)
 
 
+## Part 2
+#### Mapping the "Runlog" folder inside the container to the "Runlog" folder on the host machine.
+- build again `docker build -t docker-flask .`
+- run interactive `docker run -it -p 5002:5001 --name my_name_for_docker_flask docker-flask:latest sh` and when run ls, see **Runlog** folder
+![Alt text](image-4.png)
+- run `docker run -d -p 5002:5001 -v $(pwd)/Runlog:/app/Runlog --name my_name_for_docker_flask docker-flask:latest`
+![Alt text](image-6.png)
+log file from Host:![Alt text](image-7.png)
+
+
 
 
