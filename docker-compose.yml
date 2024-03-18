@@ -1,0 +1,12 @@
+version: "3.9"
+
+services:
+  docker-flask-world: # service name
+    build:
+      context: . # will build based on dockerfile
+      dockerfile: Dockerfile_flaskserver
+    image: docker-flask-world/docker-flask-world-compose:latest
+    ports:
+      - "5002:5001" # 5001 of flask in container can be accesses as 5002 on web browser
+    container_name: docker-flask-world-compose
+    command: python flask_server/main.py

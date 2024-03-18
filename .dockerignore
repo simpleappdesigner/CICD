@@ -1,0 +1,11 @@
+# Ignore Python bytecode files
+__pycache__
+*.pyc
+
+# Ignore virtual environment directories
+venv/
+.venv/
+
+# Any other files
+*.png
+*.md

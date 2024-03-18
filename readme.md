@@ -31,8 +31,8 @@ interactive shell
 - stop running container --> `docker stop my_name_for_docker_flask`
 - remove --> `docker rm my_name_for_docker_flask`
 - execute from shell - `docker run -it  -p 5002:5001 --name my_name_for_docker_flask docker-flask:latest sh`
--  list container(active) `docker ps`
-![Alt text](image.png)
+-  list container(active) `docker ps -a`
+![Alt text](image-3.png)
 - show images `docker images`
 ![Alt text](image-1.png)
 
@@ -54,5 +54,36 @@ quick snap of executed commands:
 log file from Host:![Alt text](image-7.png)
 
 
+--------
+## flask server - building with custom file
+1. build a image on custome dockerfile with name `docker build -f Dockerfile_flaskserver -t image-name:flask-server .` or `docker build -f Dockerfile_flaskserver -t flask_server:v1.0 .` with version
+2. 
+```
+docker image ls                                                    
+REPOSITORY     TAG            IMAGE ID       CREATED              SIZE
+image-name     flask-server   b397b49e93f1   About a minute ago   61.9MB
+docker-flask   latest         4b2e9013b1fa   2 weeks ago          61.8MB
+```
+```
+flask_server   v1.0      b397b49e93f1   7 minutes ago   61.9MB
+docker-flask   latest    4b2e9013b1fa   2 weeks ago     61.8MB
+```
+3. optional: remove image `docker rmi b397b49e93f1`
+4. interactive `docker run -it -p 5002:5001 94f0bc38ea60 sh` and then navigate to folder - 
+```
+docker run -it -p 5002:5001 94f0bc38ea60 sh
+/app # ls
+Runlog            flask_server      requirements.txt
+/app # python flask_server/main.py 
+```
+or run so flask log can be viewed at screen
+```
+docker run -it -p 5002:5001  6f7fb359d00b
+```
+
+-----
+1.create docker-compose yml
+2. run `docker-compose up`
+3. all down `docker-compose down`
 
 
